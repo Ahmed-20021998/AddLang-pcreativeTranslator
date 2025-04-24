@@ -29,6 +29,8 @@ from typing import List
 from dotenv import load_dotenv
 import os
 import uvicorn
+from fastapi.middleware.cors import CORSMiddleware
+
 
 
 
@@ -41,6 +43,14 @@ supabase: Client = create_client(SUPABASE_URL, SUPABASE_KEY)
 
 # FastAPI instance
 app = FastAPI()
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["https://add-lang-pcreative-translator-i4wii35iy.vercel.app/getLanguages"],  # Or set specific origin like ["https://your-frontend.vercel.app"]
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 # Pydantic model for Language
 class Language(BaseModel):
