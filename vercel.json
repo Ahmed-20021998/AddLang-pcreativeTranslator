@@ -2,7 +2,7 @@
     "builds":[
 
         {
-            "src":".env/demo.py",
+            "src":"./demo.py",
             "use":"@vercel/python"
         }
 
@@ -10,7 +10,7 @@
     "routes":[
         {
             "src":"/(.*)",
-            "dest":".env/demo.py"
+            "dest":"./demo.py"
         }
     ]
 }
